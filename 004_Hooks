@@ -118,5 +118,31 @@
                  ref 안의 값이 바뀌어도 컴포넌트가 렌더링되지 않는다는 점에는 주의해야 한다
                  렌더링과 관련되지 않는 값을 관리할 때만 이러한 방식으로 코드를 
 
-                 
+# 커스텀 Hooks : 여러 컴포넌트에서 비슷한 기능을 공유할 경우 만들어 사용한다
+                 마치 service 로직을 따로 분리하여 재사용하는 것고 비슷한 용도로 사용
+                
+                ex) function reducer(state, action){
+                      return{
+                        ...state,
+                        [action.name]: action.value
+                      };
+                    }
+                    
+                    export default function useInputs(initialForm){
+                      const [state, dispatch] = useReducer(reducer, initialForm);
+                      const onChange = e => {
+                        dispatch(e.target);
+                      };
+                      return [state, onChange];
+                    }
+                    
+                    # 위에서 정의한 커스텀 Hook을 다른 파일에서 사용
+                    
+                    const [state, onChange] = useInputs({
+                      name: '',
+                      nickname: ''
+                    });
+                    
+                    const { name, nickname} = state;
+                
                  
