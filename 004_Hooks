@@ -12,18 +12,21 @@
               
               - 컴포넌트가 화면에 맨 처음 렌더링될 때만 실행하고, 
                 업데이트될 때는 실행하지 않으려면 함수의 두번째 파라미터로 (비어있는 배열)을 넣는다
+                
                 ex) useEffect(()=>{
                       console.log('마운트될 때만 실행');
                     },[])  <-- 바로 여기 (비어있는 배열)
                 
               - 특정 값이 업데이트될 때만 실행하고 싶을 때
                 두 번째 파라미터로 전달되는 배열 안에 검사하고 싶은 값을 넣어주면 된다
+                
                 ex) useEffect(()=>{
                       console.log(value);
                     },[value])
                 
               - 컴포넌트가 언마운트되기 전이나 업데이트되기 직전에 어떠한 작업을 수행하고 싶다면 (뒷정리 함수)를 반환
               - 업데이트되기 직전의 값을 보여준다
+              
                 ex) useEffect(()=>{
                       console.log(value);
                       return () => {
@@ -31,15 +34,17 @@
                       }
                     })
                - 언마운될 때만 뒷정리 함수를 호출할 경우, 두번째 파라미터에 (비어있는 배열)을 넣는다
-                ex) useEffect(()=>{
-                      console.log(value);
-                      return () => {
-                        console.log("return 구문이 뒷정리 함수")
-                      }
-                    },[])  <-- 바로 여기 (비어있는 배열)
+               
+                 ex) useEffect(()=>{
+                       console.log(value);
+                       return () => {
+                         console.log("return 구문이 뒷정리 함수")
+                       }
+                     },[])  <-- 바로 여기 (비어있는 배열)
                 
 # useReducer() : 현재 상태, 업데이트를 이해 필요한 정보를 담은 액션값을 전달받아 (새로운 상태)를 반환하는 함수
                  리듀서 함수에서 (새로운 상태)를 만들 때는 반드시 (불변성)을 지켜 주어야 한다
+                 
                  ex) function reducer(state, action){
                        return {
                          ...state,
@@ -60,6 +65,7 @@
 # useMemo() : 함수형 컴포넌트 내부에서 발생하는 연산을 (최적화)할 수 있다
               렌더링하는 과정에서 특정 값이 바뀌었을 때만 연산을 실행하고
               값이 바뀌지 않았다면 이전에 연산했던 결과를 다시 사용하는 방식
+              
               ex) useMemo(()=>getAverage(list), [list]);
               - 이 예제에서 대상 함수(getAverage(list))에 대상값(list)을 담아 useMemo() 함수의 첫번째 인자로 넣고
                 두번째 함수로 대상값(list)을 배열에 담아 넣어준다
@@ -68,7 +74,35 @@
                 
 # useCallback() : 렌더링 성능을 최적화해야 하는 상황에서 사용
                   이벤트 핸들러 함수를 필요할 때만 생성할 수 있다
+                  첫 번째 파라미터에는 생성하고 싶은 함수를 넣고
+                  두 번째 파라미터에는 배열을 넣는다
+                  두 번째 파라미터에 (비어있는 배열)을 넣게 되면 컴포넌트가 렌더링될 때 단 한 번만 함수가 생성된다
+                  함수 내부에서 생태 값에 의존해야 할 경우, 그 값을 두 번째 파라미터 안에 반드시 포함시켜 주어야 한다
                   
+                  ex) onChange = useCallback(e => {
+                        setNumber(e.target.value);
+                      },[]);  <-- (비어있는 배열)
+                  
+                  ex) onInsert = useCallback(() => {
+                        const nextList = list.concat(parseInt(number));
+                        setList(nextList);
+                        setNumber('');
+                        
+                      }, [number, list]);  <-- (number 혹은 list가 바뀌엇을 때만 함수 생성)
+                  
+                  숫자, 문자열, 객체처럼 일반 값을 재사용하려면 useMemo를 사용
+                  함수를 재사용하려면 useCallback을 사용
+                  
+                  ex) useCallback(() => {
+                        console.log('hello world');
+                      }, [])
+                      
+                  ex) useMemo(() => {
+                        const fn = () => {
+                          console.log('hello world');
+                        };
+                        return fn;
+                      }, [])
               
 
                  
