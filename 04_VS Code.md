@@ -11,6 +11,9 @@
 - `ESLint` : 자바스크립트 문법 및 코드 스타일 검사
 - `Reactjs Code Snippets` : 컴포넌트 및 라이프사이클 함수를 작성할 때 단축단어 사용 코드를 자동으로 생성
 - `Prettier-Code formatter` : 코드 스타일 자동으로 정리
+- `Reactjs Code Snippet` :    
+  - 컴포넌트 코드를 간편하고 빠르게 생성할 수 있다 
+  - 에디터에서 `rsc`를 입력하고 `Enter`키를 누르면 코드가 자동으로 생성된다
   
 ---  
   
