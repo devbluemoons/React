@@ -31,3 +31,9 @@
 }
 ```  
   
+`Pretiier Options` 페이지에서 (https://prettier.io/docs/en/optons.html) 다양한 옵션을 참조할 수 있다  
+  
+`VS Code` 설정은 상단메뉴의 하위 `settings` 창으로 들어가서 검색창에 `format on save`를 검색 후  
+  
+나타나는 체크 박스에 체크하여 저장할 때마다 코드가 자동으로 정리되도록 설정할 수 있다  
+  
