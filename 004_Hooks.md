@@ -5,7 +5,7 @@
 ###### Hooks 사용법  
   
 ```jsx
-import Recact, { useState, useEffect, useReducer, useMemo, useCallBack, useRef } from 'react';
+import React, { useState, useEffect, useReducer, useMemo, useCallBack, useRef } from 'react';
 ```
   
 ---
