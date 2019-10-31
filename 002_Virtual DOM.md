@@ -1,4 +1,5 @@
 #### DOM (Document Object Model) 
+  
 객체로 문서 구조를 표현하는 방법, `XML`이나 `HTML`로 작성  
   
 웹 브라우저는 `DOM`을 활용하여 객체에 `자바스크립트`와 `CSS`를 적용  
