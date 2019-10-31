@@ -77,7 +77,7 @@ useEffect(()=>{
 function reducer(state, action){
   return {
     ...state,
-    [action.name]: action.value <-- # 객체 내부에서 필드를 []로 감싸주면 값 자체가 필드명이 된다 
+    [action.name]: action.value <-- 객체 내부에서 필드를 []로 감싸주면 값 자체가 필드명이 된다 
   };
 }
 
