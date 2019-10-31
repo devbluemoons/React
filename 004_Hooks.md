@@ -178,7 +178,7 @@ const setId = (n) => {
   
 여러 컴포넌트에서 비슷한 기능을 공유할 경우 만들어 사용한다  
   
-마치 `service 로직`을 따로 분리하여 재사용하는 것고 비슷한 용도로 사용  
+마치 `service 로직`을 따로 분리하여 `재사용`하는 것고 비슷한 용도로 사용  
   
  ```jsx
  function reducer(state, action){
