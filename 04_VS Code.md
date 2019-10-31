@@ -36,7 +36,7 @@
 }
 ```  
   
-`Pretiier Options` 페이지에서 (https://prettier.io/docs/en/options.html) 다양한 옵션을 참조할 수 있다  
+`Prettier Options` 페이지에서 (https://prettier.io/docs/en/options.html) 다양한 옵션을 참조할 수 있다  
   
 `VS Code` 설정은 상단메뉴의 하위 `settings` 창으로 들어가서 검색창에 `format on save`를 검색 후  
   
