@@ -40,3 +40,18 @@
   
 나타나는 체크 박스에 체크하여 저장할 때마다 코드가 자동으로 정리되도록 설정할 수 있다  
   
+---  
+  
+## jsconfig.json  
+  
+`VS Code`에서 파일 `자동 불러오기 기능`을 잘 활용하고 싶다면 최상위 디렉터리에 `jsconfig.json` 파일 생성  
+  
+생성된 `jsconfig.json` 파일에서 `ctrl + space` 키를 누르면 아래와 같은 코드가 자동완성 기능으로 생성된다  
+  
+```json
+{
+  "compilerOptions": {
+    "target": "es6"
+  }
+}
+```
