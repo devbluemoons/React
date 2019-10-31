@@ -22,7 +22,7 @@
   
 `.prettierrc`라는 파일을 생성한 후 아래와 같은 내용을 입력한다  
   
-```
+```json  
 {
   "singleQuote": true,
   "semi": true,
