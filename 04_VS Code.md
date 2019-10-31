@@ -62,6 +62,6 @@
 }
 ```
   
-`ctrl + space` 키는 `VS Code` 에디터의 자동완성 단축키이다  
+`ctrl + space` 키는 `VS Code` 에디터의 `자동완성 단축키`이다  
   
   
