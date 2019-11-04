@@ -61,7 +61,7 @@ import { Route, Link } from 'react-router-dom';
 </div>
 ```
   
-### `URL 파라미터`와 `쿼리`
+### URL 파라미터와 쿼리
   
 - 파라미터 예시 : `/profiles/velopert`
 - 쿼리 예시 : `/about?details=true`
