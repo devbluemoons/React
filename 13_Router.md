@@ -126,3 +126,86 @@ const About = ({ location }) => {
   
 라우트로 사용되고 있는 컴포넌트의 내부에 그저 `Route 컴포넌트`를 또 사용하면 된다  
   
+### withRouter
+  
+라우트로 사용된 컴포넌트가 아니어도 `match`, `location`, `history` 객체를 접근할 수 있게 해주는 함수  
+  
+```jsx
+import { withRouter } from 'react-router-dom';
+
+const WithRouterSample = ({ location, match, history }) => {
+  const locationValue={JSON.stringify(location, null, 2)};
+  const matchValue={JSON.stringify(match, null, 2)};
+  
+  return (
+    <div>
+      <button onClick={() => history.push('/')} >Click</button>
+    </div>
+  );
+};
+
+ export default withRouter(WithRouterSample);
+```
+  
+`withRouter`를 사용할 때는 컴포넌트를 내보내 줄 때 함수로 감싸 준다  
+  
+`JSON.stringify()`의 두 번째 파라미터와 세 번째 파라미터를 위와 같이 `null`, `2` 로 설정해 주면  
+  
+`JSON`에 들여쓰기가 적용된 상태로 문자열이 만들어진다  
+    
+### Switch
+  
+`Switch 컴포넌트`는 여러 `Route`를 감싸서 그중 일치하는 단 하나의 라우트만을 렌더링시켜 준다  
+  
+```jsx
+import { Route, Link, Switch } from 'react-router-dom';
+
+<div>
+  <ul>
+    <li>
+      <Link to="/">Home</Link>
+    </li>
+    <li>
+      <Link to="/about">About</Link>
+    </li>
+  </ul>
+  <hr>
+  <Switch>
+    <Route path="/" component={Home} exact={true} />
+    <Route path="/about" component={About} />
+    <Route path={['/one', '/two', '/three']} component={Multi} />
+  </Switch>
+</div>
+```
+  
+### NavLink
+  
+현재 경로와 `Link`에서 사용하는 경로가 일치하는 경우 특정 스타일 혹은 `CSS 클래스`를 적용할 수 있는 컴포넌트  
+  
+```jsx
+import { Route, NavLink } from 'react-router-dom';
+
+<div>
+  <ul>
+    <li>
+      <Link to="/">Home</Link>
+    </li>
+    <li>
+      <NavLink activeStyle={activeStyle} to="/about" active>
+        About
+      </Link>
+    </li>
+    <li>
+      <NavLink activeStyle={activeStyle} to="/intro">
+        About
+      </Link>
+    </li>
+  </ul>
+  <hr>
+  <Switch>
+    <Route path="/" component={Home} exact={true} />
+    <Route path="/about" component={About} />
+    <Route path="/intro" component={Intro} />
+  </Switch>
+</div>
+```
