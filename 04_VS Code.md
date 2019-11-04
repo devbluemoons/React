@@ -73,3 +73,7 @@
   
 크롬 웹 스토어에서 `React Developer 'Tools`를 검색하여 설치  
   
+### 크롬 개발자 도구를 통한 성능 모니터링
+  
+`Performance` 탭을 사용하여 측정  
+  
