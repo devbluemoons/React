@@ -13,7 +13,8 @@
 - `Prettier-Code formatter` : 코드 스타일 자동으로 정리
 - `Reactjs Code Snippet` :    
   - 컴포넌트 코드를 간편하고 빠르게 생성할 수 있다 
-  - 에디터에서 `rsc`를 입력하고 `Enter`키를 누르면 코드가 자동으로 생성된다
+  - 에디터에서 `rsc`를 입력하고 `Enter`키를 누르면 코드가 자동으로 생성된다  
+- `vscode-styled-components` : 하이라이팅(문법에 따라 에디터 폰트 색상을 입히는 작업)이 정상적으로 입혀진다  
   
 ---  
   
