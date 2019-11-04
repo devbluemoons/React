@@ -5,7 +5,7 @@
 ###### Hooks 사용법  
   
 ```jsx
-import React, { useState, useEffect, useReducer, useMemo, useCallBack, useRef } from 'react';
+import React, { useState, useEffect, useReducer, useMemo, useCallBack, useRef, useContext } from 'react';
 ```
   
 ---
@@ -173,6 +173,22 @@ const setId = (n) => {
 `ref`안의 값이 바뀌어도 컴포넌트가 렌더링되지 않는다는 점에는 주의해야 한다  
   
 렌더링과 관련되지 않는 값을 관리할 때만 이러한 방식으로 코드를 작성한다  
+  
+## useContext()
+  
+함수형 컴포넌트에서 `Context`를 아주 편하게 사용할 수 있다  
+  
+```jsx
+const { state } = useContext(ColorContext);
+
+<div
+  style={{
+    width: '64px';
+    height: '64px';
+    background: state.color
+  }}
+/>
+```
   
 ## 커스텀 Hooks  
   
