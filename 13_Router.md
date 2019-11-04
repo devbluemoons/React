@@ -197,7 +197,7 @@ import { Route, NavLink } from 'react-router-dom';
     </li>
     <li>
       <NavLink activeStyle={activeStyle} to="/intro">
-        About
+        Intro
       </Link>
     </li>
   </ul>
