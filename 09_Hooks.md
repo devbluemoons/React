@@ -29,7 +29,7 @@ const [value, setValue] = useState(3);
   
 업데이트될 때는 실행하지 않으려면 함수의 두번째 파라미터로 `비어있는 배열`을 넣는다  
 ```jsx
-useEffect(()=>{
+useEffect(() => {
   console.log('마운트될 때만 실행');
 },[])  <-- 바로 여기 (비어있는 배열)
 ```
@@ -38,7 +38,7 @@ useEffect(()=>{
   
 두 번째 파라미터로 전달되는 배열 안에 검사하고 싶은 값을 넣어주면 된다  
 ```jsx
-useEffect(()=>{
+useEffect(() => {
   console.log(value);
 },[value])
 ```    
@@ -48,7 +48,7 @@ useEffect(()=>{
 업데이트되기 직전의 값을 보여준다  
 
 ```jsx
-useEffect(()=>{
+useEffect(() => {
   console.log(value);
   return () => {
     console.log("return 구문이 뒷정리 함수")
@@ -59,7 +59,7 @@ useEffect(()=>{
 언마운트 될 때만 뒷정리 함수를 호출할 경우, 두번째 파라미터에 `비어있는 배열`을 넣는다  
   
 ```jsx
-useEffect(()=>{
+useEffect(() => {
   console.log(value);
   return () => {
     console.log("return 구문이 뒷정리 함수")
@@ -101,7 +101,7 @@ const onChange = e => {
 값이 바뀌지 않았다면 이전에 연산했던 결과를 다시 사용하는 방식  
   
 ```jsx
-useMemo(()=>getAverage(list), [list]);
+useMemo(() => getAverage(list), [list]);
 ```
   
 이 예제에서 대상 함수`getAverage(list)`에 대상값`list`을 담아 `useMemo()` 함수의 첫번째 인자로 넣고  
@@ -122,7 +122,7 @@ useMemo(()=>getAverage(list), [list]);
   
 두 번째 파라미터에 `비어있는 배열`을 넣게 되면 컴포넌트가 렌더링될 때 단 한 번만 함수가 생성된다  
   
-함수 내부에서 생태 값에 의존해야 할 경우, 그 값을 두 번째 파라미터 안에 반드시 포함시켜 주어야 한다  
+함수 내부에서 상태 값에 의존해야 할 경우, 그 값을 두 번째 파라미터 안에 반드시 포함시켜 주어야 한다  
   
 ```jsx
 onChange = useCallback(e => {
