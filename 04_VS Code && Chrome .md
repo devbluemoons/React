@@ -16,7 +16,8 @@
   - 에디터에서 `rsc`를 입력하고 `Enter`키를 누르면 코드가 자동으로 생성된다  
 - `vscode-styled-components` : 하이라이팅(문법에 따라 에디터 폰트 색상을 입히는 작업)이 정상적으로 입혀진다
 - `zentabs` : 열린 탭 개수 제한하는 라이브러리
-- `Live Server` : `html` 파일의 변경사항을 실시간으로 반영해준다 / `[Warning]` 꼭 `프로젝트 폴더`를 `오픈`해서 사용해야만 정상작동한다  
+- `Live Server` : `html` 파일의 변경사항을 실시간으로 반영해준다
+- `[Warning]` 꼭 `project folder`를 `open`해서 사용해야만 정상작동한다 / `html`파일을 선택해서 `open`하면 작동하지 않는다
 ---  
   
 ## .prettierrc
