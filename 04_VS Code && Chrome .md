@@ -17,10 +17,11 @@
 - `vscode-styled-components` : 하이라이팅(문법에 따라 에디터 폰트 색상을 입히는 작업)이 정상적으로 입혀진다
 - `zentabs` : 열린 탭 개수 제한하는 라이브러리
 
-- `Live Server` : `html` 파일의 변경사항을 실시간으로 반영해준다
-- `[Warning]` 꼭 `project folder`를 `open`해서 사용해야만 정상작동한다 
-- `html`파일을 선택해서 `open`하면 작동하지 않는다
-- [Ref.] https://github.com/ritwickdey/vscode-live-server/issues/248
+- `Live Server`
+  - `html` 파일의 변경사항을 실시간으로 반영해준다
+  - `[주의할 점]` 꼭 `project folder`를 `open`해서 사용해야만 정상작동한다 
+  - `html`파일을 선택해서 `open`하면 작동하지 않는다
+  - [Ref.] https://github.com/ritwickdey/vscode-live-server/issues/248
 ---  
   
 ## .prettierrc
