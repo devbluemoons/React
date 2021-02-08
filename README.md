@@ -20,17 +20,17 @@ yarn global add create-react-app
 ```
   
 ###### create `react web application`
-```
+```sh
 yarn create react-app [project-name]
 ```
   
 ###### run `react web application`
-```
+```sh
 yarn start
 ```
   
 ###### yarn simple guide & command
-```
+```sh
 # Starts the development server.
 yarn start
     
@@ -46,7 +46,6 @@ yarn eject
    
 
 # We suggest that you begin by typing:
-
 cd [project-directory]
 yarn start
 ```
