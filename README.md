@@ -1,8 +1,4 @@
-# React
-  
-self-study & Ref.  
-  
-###### ref. `리액트를 다루는 기술`  
+## React
   
 ###### install `yarn`
 ```
@@ -49,4 +45,8 @@ yarn eject
 cd [project-directory]
 yarn start
 ```
+  
+###### how to set alias path
+```
 
+```
