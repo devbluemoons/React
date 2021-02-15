@@ -111,3 +111,9 @@ module.exports = {
     "eject": "react-scripts eject"
 },
 ```
+  
+###### `install sass(scss) loader`
+```sh
+yarn add node-sass --save
+```
+  
