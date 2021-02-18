@@ -118,4 +118,7 @@ yarn add node-sass --save
 ```
     
 ###### get information of `current` reference `useRef()`
-https://stackoverflow.com/questions/58222004/how-to-get-parent-width-height-in-react-using-hooks
+https://stackoverflow.com/questions/58222004/how-to-get-parent-width-height-in-react-using-hooks  
+  
+###### get information of `scrollTop` reference `useRef()`
+https://stackoverflow.com/questions/33748967/change-scrolltop-in-reactjs/55184755
