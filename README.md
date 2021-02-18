@@ -117,5 +117,5 @@ module.exports = {
 yarn add node-sass --save
 ```
     
-###### `useRef() get information of current reference`
+###### get information of `current` reference `useRef()`
 https://stackoverflow.com/questions/58222004/how-to-get-parent-width-height-in-react-using-hooks
