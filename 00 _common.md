@@ -1,6 +1,7 @@
 ## `Timer`
 ```js
 yarn add react-live- click --save
+yarn add moment-timezone --save
 ```
   
 ```js
