@@ -13,10 +13,10 @@ const [production, setProduction] = useState({});
 const [jobList, setJobList] = useState([]);
 
 useEffect(() => {
-		if (production?.jobList) {
-			  const list = [...production.jobList];
-			  list.sort((a, b) => a.mesOrder - b.mesOrder);
-			setJobList(list);
-		}
+    if (production?.jobList) {
+	const list = [...production.jobList];
+	list.sort((a, b) => a.mesOrder - b.mesOrder);
+	setJobList(list);
+    }
 }, [production.jobList]);
 ```
