@@ -24,100 +24,113 @@ export default Timer;
 ## `Select`
 ```jsx
 import { useState, useEffect, useRef } from "react";
+import { useRecoilState } from "recoil";
+import { focusState } from "@/state/focusState";
+import { openState } from "@/state/openState";
 
-const list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-let placeHolder = "선택을 해주세요.";
+const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const placeHolder = "선택해 주세요.";
 
 function Select({ data }) {
-    // state
-    const [isOpen, setIsOpen] = useState(false);
-    const [isOn, setIsOn] = useState("on");
-    const [isScroll, setIsScroll] = useState("scrolling");
-    const [inputValue, setInputValue] = useState("");
-    const [isMove, setIsMove] = useState(0);
+	// state
+	// const [isOpen, setIsOpen] = useState(false);
+	const [isOn, setIsOn] = useState("on");
+	const [isScroll, setIsScroll] = useState("scrolling");
+	const [inputValue, setInputValue] = useState("");
+	const [isMove, setIsMove] = useState(false);
+	const [isFocus, setIsFocus] = useRecoilState(focusState);
+	const [isOpen, setIsOpen] = useRecoilState(openState);
 
-    // reference
-    const selectBox = useRef();
-    const scrollBox = useRef();
-    const itemList = useRef();
-    let isPress = useRef(false);
-    let event = useRef(null);
+	// reference
+	const selectBox = useRef();
+	const scrollBox = useRef();
+	const itemList = useRef();
+	const componentRef = useRef();
 
-    // event
-    const onClick = () => setIsOpen(!isOpen);
-    const onMouseLeave = () => setIsOpen(false);
-    const onSelect = e => {
-        setInputValue(e.target.innerText);
-        setIsOpen(false);
-    };
-    const onMouseDown = e => {
-        isPress.current = true;
-        event.current = e;
+	// local variables
+	const isPress = useRef(false);
+	const event = useRef(null);
 
-        if (itemList.current) {
-            const { current } = itemList;
-            const move = current.firstChild.offsetHeight;
+	// event
+	const onClick = () => setIsOpen(!isOpen);
+	const onMouseLeave = () => setIsOpen(false);
+	const onSelect = e => {
+		setInputValue(e.target.innerText);
+		setIsOpen(false);
+	};
+	const onMouseDown = e => {
+		isPress.current = true;
+		event.current = e;
 
-            switch (e.target.name) {
-                case "up":
-                    scrollBox.current.scrollTop -= move;
-                    break;
-                case "down":
-                    scrollBox.current.scrollTop += move;
-                    break;
-            }
+		if (!itemList.current) {
+			return false;
+		}
 
-            setIsMove(scrollBox.current.scrollTop);
-        }
-    };
-    const onMouseUp = () => (isPress.current = false);
+		const { current } = itemList;
+		const move = current.firstChild.offsetHeight;
+		let scrollTop = scrollBox.current.scrollTop;
 
-    // watch
-    useEffect(() => {
-        setIsOn(isOpen ? "on" : "");
+		switch (e.target.name) {
+			case "up":
+				scrollTop -= move;
+				break;
+			case "down":
+				scrollTop += move;
+				break;
+			default:
+		}
 
-        if (isOpen) {
-            const selecBoxHeight = selectBox.current.offsetHeight;
-            const itemListHeight = itemList.current.offsetHeight;
+		scrollBox.current.scrollTop = scrollTop;
+		setIsMove(scrollTop);
+	};
+	const onMouseUp = () => (isPress.current = false);
 
-            const result = selecBoxHeight < itemListHeight;
-            setIsScroll(result ? "scrolling" : "");
-        }
-    }, [isOpen]);
+	// watch
+	useEffect(() => {
+		setIsOn(isOpen ? "on" : "");
 
-    useEffect(() => {
-        setTimeout(() => {
-            isPress.current && onMouseDown(event.current);
-        }, 100);
-    }, [isMove]);
+		if (isOpen) {
+			const selectBoxHeight = selectBox.current.offsetHeight;
+			const itemListHeight = itemList.current.offsetHeight;
 
-    // view
-    return (
-        <div className="input-box" onMouseLeave={onMouseLeave}>
-            <div className={`select-input ${isOn}`} onClick={onClick}>
-                <input type="text" value={inputValue} placeholder={placeHolder} readOnly />
-            </div>
+			const result = selectBoxHeight < itemListHeight;
+			setIsScroll(result ? "scrolling" : "");
+			setIsFocus(componentRef.current);
+		}
+	}, [isOpen]);
 
-            {isOpen && (
-                <div className={`select-items ${isScroll}`} ref={selectBox}>
-                    <div className="scroll-box" ref={scrollBox}>
-                        <ul ref={itemList}>
-                            {list.map((item, index) => (
-                                <li key={index} onClick={onSelect}>
-                                    <a>{item}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="scroll-btn">
-                        <a className="up-btn" name="up" onMouseDown={onMouseDown} onMouseUp={onMouseUp}></a>
-                        <a className="down-btn" name="down" onMouseDown={onMouseDown} onMouseUp={onMouseUp}></a>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
+	useEffect(() => {
+		setTimeout(() => {
+			isPress.current && onMouseDown(event.current);
+		}, 100);
+	}, [isMove]);
+
+	// view
+	return (
+		<div className="input-box" ref={componentRef}>
+			<div className={`select-input ${isOn}`} onClick={onClick}>
+				<input type="text" value={inputValue} placeholder={placeHolder} readOnly />
+			</div>
+
+			{isOpen && (
+				<div className={`select-items ${isScroll}`} ref={selectBox}>
+					<div className="scroll-box" ref={scrollBox}>
+						<ul ref={itemList}>
+							{list.map(i => (
+								<li key={i.toString()} onClick={onSelect}>
+									<a>{i}</a>
+								</li>
+							))}
+						</ul>
+					</div>
+					<div className="scroll-btn">
+						<a className="up-btn" name="up" onMouseDown={onMouseDown} onMouseUp={onMouseUp}></a>
+						<a className="down-btn" name="down" onMouseDown={onMouseDown} onMouseUp={onMouseUp}></a>
+					</div>
+				</div>
+			)}
+		</div>
+	);
 }
 
 export default Select;
